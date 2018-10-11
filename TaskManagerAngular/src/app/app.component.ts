@@ -2,7 +2,6 @@ import { Component,NgModule,OnInit } from '@angular/core';
 import { SharedService } from '../app/Services/Services';
 import { Http, Response,HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { AngularDateTimePickerModule} from 'angular2-datetimepicker';
 import { Task } from './Services/Model';
 
 
@@ -68,7 +67,7 @@ return;
   
   SearchByParentTask() { 
     this.TaskList = this.TaskListMaster.filter(x=>(x.ParentTask!=null&&  x.ParentTask.toLowerCase().includes(this.searchPTask.toLowerCase()))); 
-    
+        
   }
 
   SearchByPriority() { 

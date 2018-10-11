@@ -11,27 +11,28 @@ export class SharedService {
 
   taskdata: any;
   taskList: any;
+  url='http://172.18.1.114:81//api/Task'
 
 constructor(private httpServ: Http) { }
-  getTaskListUri = "http://localhost:50451/api/Task/GetTaskList";
+  getTaskListUri = this.url+"/GetTaskList";
 
   GetTaskList(){
     return this.httpServ.get(this.getTaskListUri);
   }
 
-  getTaskUri = "http://localhost:50451/api/Task/GetTaskById";
+  getTaskUri = this.url+"/GetTaskById";
   GetTaskById(Id:number){
     return this.httpServ.get(this.getTaskUri+ "?Id="+Id);
   }
 
-  CreateTaskUri = "http://localhost:50451/api/Task/CreateTask";
+  CreateTaskUri = this.url+"/CreateTask";
   AddTask(data: Task) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this.httpServ.post(this.CreateTaskUri, data, options);
   }
 
-  updateTaskUri = "http://localhost:50451/api/Task/UpdateTask";
+  updateTaskUri = this.url+"/UpdateTask";
   UpdateTask(data: Task) {
 
     const headers = new Headers({ 'Content-Type': 'application/json' });
@@ -40,12 +41,12 @@ constructor(private httpServ: Http) { }
     return this.httpServ.post(this.updateTaskUri, data, options);
   }
 
-  endTaskUri = "http://localhost:50451/api/Task/EndTask?Id=";
+  endTaskUri = this.url+"/EndTask?Id=";
   EndTask(Id:number){
     return this.httpServ.get(this.endTaskUri+Id);
   }
 
-  getParentTaskUri = "http://localhost:50451/api/Task/ParentTask";
+  getParentTaskUri = this.url+"/ParentTask";
   GetParentTask(){
     return this.httpServ.get(this.getParentTaskUri);
   }
