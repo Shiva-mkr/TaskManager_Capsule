@@ -9,6 +9,14 @@ namespace TaskManager.DataLayer
     public partial class Task_Master
     {
         public string ParentTask { get; set; }
-     
+        
+
     }
-}
+
+    public partial class Task_MasterDTO: Task_Master
+    {
+        
+
+    }
+
+    }

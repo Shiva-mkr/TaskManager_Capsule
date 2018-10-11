@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.BusinessLayer",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManger.DTOContext", "TaskManger.DTOContext\TaskManger.DTOContext.csproj", "{71FF0902-1945-44DB-849C-E13690622D3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Nbench", "TaskManager.Nbench\TaskManager.Nbench.csproj", "{84C3760F-2AF9-4307-BC06-C1D8CC8D6C95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{71FF0902-1945-44DB-849C-E13690622D3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71FF0902-1945-44DB-849C-E13690622D3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71FF0902-1945-44DB-849C-E13690622D3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84C3760F-2AF9-4307-BC06-C1D8CC8D6C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84C3760F-2AF9-4307-BC06-C1D8CC8D6C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84C3760F-2AF9-4307-BC06-C1D8CC8D6C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84C3760F-2AF9-4307-BC06-C1D8CC8D6C95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

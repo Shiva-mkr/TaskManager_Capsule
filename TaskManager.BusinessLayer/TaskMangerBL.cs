@@ -30,7 +30,7 @@ namespace TaskManager.BusinessLayer
                 tmContext.Parent_ID = item.Parent_ID;
                 tmContext.Task = item.Task;
                 tmContext.StartDate = item.StartDate;
-                tmContext.EndDate = item.EndDate;
+                tmContext.EndDate = item.EndDate.Value;
                 tmContext.Priority = item.Priority;
                 tmContext.IsTaskEnded = item.IsTaskEnded == null ? 0 : item.IsTaskEnded;
                 tmContext.ParentTask = item.ParentTask;
@@ -53,7 +53,7 @@ namespace TaskManager.BusinessLayer
 
             Task_Master tmContext = new Task_Master();
             tmContext.Task_ID = task.Task_ID;
-            tmContext.Parent_ID = task.Parent_ID;
+            tmContext.Parent_ID = Convert.ToInt32(task.ParentTask);
             tmContext.Task = task.Task;
             tmContext.StartDate = task.StartDate;
             tmContext.EndDate = task.EndDate;
@@ -62,7 +62,7 @@ namespace TaskManager.BusinessLayer
             tmContext.ParentTask = task.ParentTask;
 
             ParentTask_Master pmContext = new ParentTask_Master();
-            pmContext.Parent_ID = parentTask.Parent_ID;
+            //pmContext.Parent_ID =(int) parentTask.Parent_ID;
             pmContext.Parent_Task = parentTask.Parent_Task;
 
             IsTaskAdded = dataAccess.AddTask(tmContext, pmContext);
@@ -90,8 +90,8 @@ namespace TaskManager.BusinessLayer
             tmContext.ParentTask = task.ParentTask;
 
             ParentTask_Master pmContext = new ParentTask_Master();
-            pmContext.Parent_ID = parentTask.Parent_ID;
-            pmContext.Parent_Task = parentTask.Parent_Task;
+            pmContext.Parent_ID =(int)task.Task_ID;
+            pmContext.Parent_Task = task.Task;
             bool IsTaskUpdated;
             IsTaskUpdated = dataAccess.UpdateTask(tmContext, pmContext);
             return IsTaskUpdated;
@@ -131,6 +131,8 @@ namespace TaskManager.BusinessLayer
             taskData.Priority = task.Priority;
             taskData.IsTaskEnded = task.IsTaskEnded;
             taskData.ParentTask = task.ParentTask;
+            taskData.Start_Date = task.StartDate.Value.ToShortDateString();
+            taskData.End_Date = task.EndDate.Value.ToShortDateString();
             return taskData;
         }
         #endregion

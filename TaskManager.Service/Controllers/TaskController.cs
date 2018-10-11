@@ -54,6 +54,8 @@ namespace TaskManager.Service.Controllers
                 taskData.EndDate = Convert.ToDateTime(taskData.EndDate);
                 taskData.StartDate = (taskData.StartDate.Value.Year > 2000) ? taskData.StartDate : null;
                 taskData.EndDate = (taskData.EndDate.Value.Year > 2000) ? taskData.EndDate : null;
+                
+                taskData.Parent_ID = taskData.Parent_ID;
                 parentTaskData.Parent_ID = taskData.Task_ID;
                 parentTaskData.Parent_Task = taskData.Task;
 
@@ -89,6 +91,8 @@ namespace TaskManager.Service.Controllers
                 taskData.EndDate = Convert.ToDateTime(taskData.EndDate);
                 taskData.StartDate = (taskData.StartDate.Value.Year > 2000) ? taskData.StartDate : null;
                 taskData.EndDate = (taskData.EndDate.Value.Year > 2000) ? taskData.EndDate : null;
+                parentTaskData.Parent_ID = taskData.Parent_ID;
+                parentTaskData.Parent_Task = taskData.Task;
                 bool updateTask = taskBL.UpdateTask(taskData, parentTaskData);
                 var response = Request.CreateResponse<bool>(HttpStatusCode.OK, updateTask);
                 return response;

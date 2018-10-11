@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TaskManager.DataLayer\TaskManager.DataLayer.csproj">
-      <Project>{9DE06212-763D-4021-963A-6EB4F54976EB}</Project>
+      <Project>{9de06212-763d-4021-963a-6eb4f54976eb}</Project>
       <Name>TaskManager.DataLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\TaskManger.DTOContext\TaskManger.DTOContext.csproj">

@@ -14,8 +14,7 @@ namespace TaskManager.DataLayer
     
     public partial class ParentTask_Master
     {
-        public int Id { get; set; }
-        public Nullable<int> Parent_ID { get; set; }
+        public int Parent_ID { get; set; }
         public string Parent_Task { get; set; }
     }
 }

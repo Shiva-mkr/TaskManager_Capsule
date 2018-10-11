@@ -15,7 +15,8 @@ namespace TaskManger.DTOContext
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<int> Priority { get; set; }
         public Nullable<int> IsTaskEnded { get; set; }
-
+        public string Start_Date { get; set; }
+        public string End_Date { get; set; }
         public string ParentTask { get; set; }
     }
     public class ParentTaskMangerContext

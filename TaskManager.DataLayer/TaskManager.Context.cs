@@ -18,21 +18,15 @@ namespace TaskManager.DataLayer
         public Task_ManagerEntities()
             : base("name=Task_ManagerEntities")
         {
+            var ensureDLLIsCopied =
+               System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-        private void FixEfProviderServicesProblem()
-        {
-            // The Entity Framework provider type 'System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer'
-            // for the 'System.Data.SqlClient' ADO.NET provider could not be loaded. 
-            // Make sure the provider assembly is available to the running application. 
-            // See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.
-            var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
-        }
-
+    
         public virtual DbSet<ParentTask_Master> ParentTask_Master { get; set; }
         public virtual DbSet<Task_Master> Task_Master { get; set; }
     }
