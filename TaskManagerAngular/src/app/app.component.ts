@@ -3,7 +3,7 @@ import { SharedService } from '../app/Services/Services';
 import { Http, Response,HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { Task } from './Services/Model';
-
+declare var $: any;
 
 @Component({
   selector: 'app-root',
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
    TaskName='';
    Priority='50';
    ParentTask='';
-   StartDate:string;
+   StartDate='';
    EndDate:string;  
    
     searchTask='';  
@@ -33,7 +33,8 @@ TaskListMaster:any;
    data:Task;
    AddtaskResStatus:false;
    Task_ID:number=0;
-   
+   searchFromDate='';
+   searchToDate='';
    constructor(public _service: SharedService) { }
 
    ngOnInit() {
@@ -59,6 +60,11 @@ return;
       this.SearchByPriority();
       return;
     }
+    else if(this.searchFromDate.length>0 || this.searchToDate.length>0)
+    {      
+      this.SearchByDate();
+      return;
+    }
     this.TaskList=this.TaskListMaster;
   }
   SearchByTask() { 
@@ -81,7 +87,20 @@ return;
       else if(this.SearchPriorityTo>0){
         this.TaskList = this.TaskListMaster.filter(x => (x.Priority <= this.SearchPriorityTo)); 
         }
+  }
+  
+  SearchByDate() { 
+    if(this.searchFromDate.length>0 && this.searchToDate.length>0){
+    this.TaskList = this.TaskListMaster.filter(x => (x.startdate >= this.searchFromDate && x.startdate <= this.searchToDate)); 
+    }
+    else if(this.searchFromDate.length>0){      
+      this.TaskList = this.TaskListMaster.filter(x => (new Date(x.StartDate) >=new Date(this.searchFromDate))); 
+      }
+      else if(this.searchToDate.length>0){
+        this.TaskList = this.TaskListMaster.filter(x => (new Date(x.EndDate) <= new Date( this.searchToDate))); 
+        }
   } 
+
 
   GetParentTask() {
     this._service.GetParentTask().subscribe((res: Response) => {
@@ -143,11 +162,15 @@ return;
        
        this.ToggleView('add');
        this.TaskName=this.data.Task;
-       this.StartDate=this.data.Start_Date;
-       this.EndDate=this.data.End_Date;
+       //this.StartDate=this.data.Start_Date.toString().slice(0,10);
+       this.StartDate= new Date(this.data.Start_Date).toISOString().substring(0, 10);
+      // alert(this.StartDate);
+       this.EndDate= new Date(this.data.End_Date).toISOString().substring(0, 10);
        this.Priority=this.data.Priority;
        this.ParentTask=(this.data.Parent_ID=='0')?null:this.data.Parent_ID;
        this.Task_ID=this.data.Task_ID;
+//     $('#startdate').val(this.StartDate);
+       //document.getElementById('startdate')[0].value=this.StartDate;
 //alert(this.StartDate);
       }
       else{

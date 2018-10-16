@@ -56,13 +56,13 @@
         </div>
         <div class="form-group">
             <label for="lastname" class="control-label">End Date:</label>
-            <input type="date" class="form-control" id="enddate" placeholder="End Date" [(ngModel)]="EndDate" data-error="Enter End Date" required>
+            <input type="date"  class="form-control" id="enddate" placeholder="End Date" [(ngModel)]="EndDate" data-error="Enter End Date" required>
             <!-- <angular2-date-picker [(ngModel)]="EndDate" [settings]="settings"></angular2-date-picker> -->
             <div class="help-block with-errors"></div>
         </div>
 
         <div class="form-group">
-            <button type="button" (click)="CreateTask()" class="btn btn-primary">Add Task</button>
+            <button type="button" (click)="CreateTask()" class="btn btn-primary">Save Task</button>
             <button type="button" (click)="ResetTaskData()" class="btn btn-primary">Reset</button>
 
         </div>
@@ -91,11 +91,11 @@
             </div>
             <div class="col-sm-3">
                 <label for="Task" class="control-label">Start Date:</label>
-                <input type="text" class="form-control" id="startdate" placeholder="Start Date">
+                <input type="text" class="form-control" [(ngModel)]="searchFromDate" id="startdate" placeholder="Start Date">
             </div>
             <div class="col-sm-3">
                 <label for="Parent Task" class="control-label">End Date:</label>
-                <input type="text" class="form-control" id="endDate" placeholder="End Date">
+                <input type="text" class="form-control" [(ngModel)]="searchToDate" id="endDate" placeholder="End Date">
             </div>
         </div>
         <div class="row margin-top10">

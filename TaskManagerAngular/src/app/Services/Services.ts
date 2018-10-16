@@ -12,6 +12,7 @@ export class SharedService {
   taskdata: any;
   taskList: any;
   url='http://172.18.1.114:81//api/Task'
+ //url='http://localhost:50451/api/Task';
 
 constructor(private httpServ: Http) { }
   getTaskListUri = this.url+"/GetTaskList";
